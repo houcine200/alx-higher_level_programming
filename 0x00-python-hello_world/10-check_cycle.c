@@ -4,7 +4,6 @@
  * @list: A pointer to the head of the linked list
  *
  * Description: This function determines whether a linked list contains a cycle
- * by using the Floyd's cycle detection algorithm.
  *
  * Return: If there is a cycle, it returns 1. Otherwise, it returns 0.
  */
