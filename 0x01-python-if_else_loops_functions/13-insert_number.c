@@ -3,7 +3,6 @@
 listint_t *insert_node(listint_t **head, int number)
 {
 	listint_t *temp, *mid = malloc(sizeof(listint_t));
-	int i;
 
 	if(!mid)
 		return NULL;
