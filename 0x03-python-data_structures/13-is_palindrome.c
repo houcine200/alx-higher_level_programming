@@ -95,20 +95,20 @@ int main(void)
 }
 listint_t *reverse_listint(listint_t **head)
 {
-	listint_t *prev = NULL;
-	listint_t *next = NULL;
+    listint_t *prev = NULL;
+    listint_t *next = NULL;
 
-	while (*head)
-	{
-		next = (*head)->next;
-		(*head)->next = prev;
-		prev = *head;
-		*head = next;
-	}
+    while (*head)
+    {
+        next = (*head)->next;
+        (*head)->next = prev;
+        prev = *head;
+        *head = next;
+    }
 
-	*head = prev;
+    *head = prev;
 
-	return (*head);
+    return (*head);
 }
 int is_palindrome(listint_t **head)
 {
@@ -134,10 +134,29 @@ int is_palindrome(listint_t **head)
     {
         if (list1->n != list2->n)
         {
+            listint_t *current;
+
+            while (copy != NULL)
+            {
+                current = copy;
+                copy = copy->next;
+                free(current);
+            }
+
+
             return 0; // Lists are not equal
         }
         list1 = list1->next;
         list2 = list2->next;
+    }
+
+    listint_t *current;
+
+    while (copy != NULL)
+    {
+        current = copy;
+        copy = copy->next;
+        free(current);
     }
     return (list1 == NULL && list2 == NULL);
 }
