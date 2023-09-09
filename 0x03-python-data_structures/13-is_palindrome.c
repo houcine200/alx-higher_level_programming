@@ -1,5 +1,5 @@
 #include"lists.h"
-#include <stdlib.h>
+
 listint_t *reverse_listint(listint_t **head)
 {
     listint_t *prev = NULL;
@@ -27,7 +27,6 @@ int is_palindrome(listint_t **head)
     listint_t *curr = *head;
     while (curr != NULL)
     {
-        add_nodeint_end(&copy, curr->n);
         curr = curr->next;
     }
     // Reverse the copy
