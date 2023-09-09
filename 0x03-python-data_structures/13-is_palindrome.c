@@ -4,20 +4,17 @@ int is_palindrome(listint_t **head);
 
 listint_t *reverse_list(listint_t **head)
 {
-    listint_t *prev = NULL;
-    listint_t *next = NULL;
+	listint_t *node = *head, *next, *prev = NULL;
 
-    while (*head)
-    {
-        next = (*head)->next;
-        (*head)->next = prev;
-        prev = *head;
-        *head = next;
-    }
-
-    *head = prev;
-
-    return (*head);
+	while (node)
+	{
+		next = node->next;
+		node->next = prev;
+		prev = node;
+		node = next;
+	}
+	*head = prev;
+	return (*head);
 }
 int is_palindrome(listint_t **head)
 {
