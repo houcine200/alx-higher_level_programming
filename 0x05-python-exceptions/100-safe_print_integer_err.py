@@ -1,10 +1,8 @@
 #!/usr/bin/python3
 def safe_print_integer_err(value):
     try:
-        if isinstance(value, int) == False:
-            raise TypeError("Exception: Unknown format code 'd' for object of type 'str'")
-        print(value)
+        print("{:d}".format(value))
         return True
-    except TypeError as err:
+    except (ValueError, TypeError) as err:
         print(err)
         return False
