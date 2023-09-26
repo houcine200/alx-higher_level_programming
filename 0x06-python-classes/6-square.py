@@ -1,10 +1,13 @@
 #!/usr/bin/python3
 """ define class square """
+
+
 class Square:
     """ the class square """
     def __init__(self, size=0, position=(0, 0)):
         self.size = size
         self.position = position
+
     @property
     def size(self):
         return self.__size
@@ -15,18 +18,8 @@ class Square:
             raise TypeError("size must be an integer")
         if value < 0:
             raise ValueError("size must be >= 0")
-
-    
-        
-          
-    
-
-        
-        Expand All
-    
-    @@ -26,18 +26,17 @@ def position(self):
-  
         self.__size = value
+
     @property
     def position(self):
         return self.__position
