@@ -11,16 +11,16 @@ class Square:
             raise ValueError("size must be >= 0")
         else:
             self.__size = size
-            
+
     def area(self):
         """Compute and return the area of the square."""
         return self.__size ** 2
-        
+
     @property
     def size(self):
         """Property to retrieve the square size."""
         return self.__size
-        
+
     @size.setter
     def size(self, value):
         """Property setter to set the age."""
