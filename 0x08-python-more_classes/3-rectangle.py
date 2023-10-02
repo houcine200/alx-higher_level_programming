@@ -43,5 +43,5 @@ class Rectangle:
     def __str__(self):
         if self.__width == 0 or self.height == 0:
             return ""
-        result = ["#" * 10] * 3  # Create a list of repeated strings
+        result = ["#" * self.__width] * self.__height
         return '\n'.join(result)
