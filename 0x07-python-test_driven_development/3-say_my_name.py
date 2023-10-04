@@ -5,7 +5,7 @@ prints the first and last name if both are strings.
 """
 
 
-def say_my_name(first_name, last_name=""):
+def say_my_name(first_name="", last_name=""):
     """Method for printing first and last name.
 
     Args:
