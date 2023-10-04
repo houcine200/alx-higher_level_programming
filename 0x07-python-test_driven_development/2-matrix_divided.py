@@ -24,7 +24,8 @@ def matrix_divided(matrix, div):
     """
     if not isinstance(matrix, list) or len(matrix) == 0 or \
             not all(isinstance(row, list) for row in matrix) or \
-            any((isinstance(x, (int, float)) for x in row) is False for row in matrix):
+            any(len(row) == 0 for row in matrix) or \
+            not all(isinstance(x, (int, float))for row in matrix for x in row):
         raise TypeError("matrix must be a matrix (list of lists) of "
                         "integers/floats")
 
