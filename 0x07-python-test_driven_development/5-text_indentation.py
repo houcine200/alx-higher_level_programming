@@ -15,7 +15,7 @@ def text_indentation(text):
         raise TypeError("text must be a string")
 
     for sep in ".?:":
-        
+
         text = (sep + "\n\n").join(
             [line.strip(" ") for line in text.split(sep)])
 
