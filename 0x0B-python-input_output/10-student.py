@@ -19,4 +19,3 @@ class Student:
                     result[key] = value
 
         return result
-    
