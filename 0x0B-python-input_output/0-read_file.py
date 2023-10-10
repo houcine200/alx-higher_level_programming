@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """function that read from a txt file"""
 
 
