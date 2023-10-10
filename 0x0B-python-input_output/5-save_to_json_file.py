@@ -10,4 +10,4 @@ def save_to_json_file(my_obj, filename):
     json_string = json.dumps(my_obj)
 
     with open(filename, "w") as file:
-        return file.write(json_string)
+        file.write(json_string)
