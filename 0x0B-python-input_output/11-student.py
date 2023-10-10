@@ -19,7 +19,7 @@ class Student:
                     result[key] = value
 
         return result
-    
+
     def reload_from_json(self, json):
         """Replace all attributes of the student.
         Args:
