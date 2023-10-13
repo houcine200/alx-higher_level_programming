@@ -78,9 +78,16 @@ class Rectangle(Base):
     def __str__(self):
         return "[{}] ({}) {}/{} - {}/{}".format(self.__class__.__name__, self.id, self.x, self.y, self.width, self.height)
     
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """ Updates the values of the attributes """
         attrs = ["id", "width", "height", "x", "y"]
+
         if args is not None and len(args) != 0:
             for i in range(min(len(args), len(attrs))):
                 setattr(self, attrs[i], args[i])
+        
+        elif kwargs is not None:
+            for key, value in kwargs.items():
+                if key in attrs:
+                    setattr(self, key, value)
+
