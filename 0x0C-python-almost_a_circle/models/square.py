@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Square class, inherits from rectangle """
+""" Square class, inherits from rectangle. """
 from models.rectangle import Rectangle
 
 
