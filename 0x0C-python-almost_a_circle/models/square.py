@@ -31,3 +31,9 @@ class Square(Rectangle):
         elif kwargs is not None:
             for key, value in kwargs.items():
                 setattr(self, key, value)
+    
+    def to_dictionary(self):
+        """ Returns the dictionary representation """
+        attrs = ["id", "size", "x", "y"]
+        values = [self.id, self.width, self.x, self.y]
+        return dict(zip(attrs, values))
