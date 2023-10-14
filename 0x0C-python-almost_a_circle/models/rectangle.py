@@ -91,3 +91,8 @@ class Rectangle(Base):
                 if key in attrs:
                     setattr(self, key, value)
 
+    def to_dictionary(self):
+        """ Returns the dictionary representation """
+        attrs = ["id", "width", "height", "x", "y"]
+        values = [self.id, self.width, self.height, self.x, self.y]
+        return dict(zip(attrs, values))
