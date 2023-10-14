@@ -42,4 +42,14 @@ class Base:
             return []
         return loads(json_string)
 
+    @classmethod
+    def create(cls, **dictionary):
+        """ loads instance from dictionary """
+        if cls.__name__ == "Rectangle":
+            new_ins = cls(1, 1)
+        elif cls.__name__ == "Square":
+            new = cls(1)
+        new_ins.update(**dictionary)
+        return new_ins
+
 
