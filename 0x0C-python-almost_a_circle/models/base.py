@@ -52,4 +52,15 @@ class Base:
         new_ins.update(**dictionary)
         return new_ins
 
-
+    @classmethod
+    def load_from_file(cls):
+        """  returns a list of instances """
+        try:
+            instance_list = []
+            with open(cls.__name__ + ".json", mode='r') as a_file:
+                j_file = cls.from_json_string(a_file.read())
+                for dic in j_file:
+                    instance_list.append(cls.create(**dic))
+                return instance_list
+        except:
+            return []
