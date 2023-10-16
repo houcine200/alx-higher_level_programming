@@ -1,73 +1,118 @@
 #!/usr/bin/python3
-""" unit test for rectangle """
-import unittest
-from models.square import Square
-from models.rectangle import Rectangle
+""" DEfinition of the class Rectangle, inherits from Base """
 from models.base import Base
 
 
-class RectangleTestCase(unittest.TestCase):
-    """ test class for rectangle """
-    def setUp(self):
-        """
-        Resets id
-        """
-        Base._Base__nb_objects = 0
+class Rectangle(Base):
+    """
+    Rectangle definition
+    """
+    def __init__(self, width, height, x=0, y=0, id=None):
+        """ Constructor """
+        super().__init__(id)
+        self.width = width
+        self.height = height
+        self.x = x
+        self.y = y
 
-    def test_rectangle(self):
-        """ rectangle func """
-        #
-        r1 = Rectangle(10, 2)
-        self.assertEqual(r1.id, 1)
-        #
-        r2 = Rectangle(2, 10)
-        self.assertEqual(r2.id, 2)
-        #12
-        r4 = Rectangle(1, 2)
-        self.assertEqual(r4.id, 3)
-        #13
-        r5 = Rectangle(1, 2, 3)
-        self.assertEqual(r5.id, 4)
-        #14
-        r5 = Rectangle(1, 2, 3, 4)
-        self.assertEqual(r5.id, 5)
-        #15
-        with self.assertRaises(TypeError):
-            Rectangle("1", 2)
-        #16
-        with self.assertRaises(TypeError):
-            Rectangle(1, "2")
-        #17
-        with self.assertRaises(TypeError):
-            Rectangle(1, 2, "3")
-        #18
-        with self.assertRaises(TypeError):
-            Rectangle(1, 2, 3, "4")
-        #19
-        r3 = Rectangle(10, 2, 0, 0, 12)
-        self.assertEqual(r3.id, 12)
-        #20
-        with self.assertRaises(ValueError):
-            Rectangle(-1, 2)
-        #21
-        with self.assertRaises(ValueError):
-            Rectangle(1, -2)
-        #22
-        with self.assertRaises(ValueError):
-            Rectangle(0, -2)
-        #23
-        with self.assertRaises(ValueError):
-            Rectangle(1, 0)
-        #24
-        with self.assertRaises(ValueError):
-            Rectangle(1, 2, -3)
-        #25
-        with self.assertRaises(ValueError):
-            Rectangle(1, 2, 3, -4)
-        #26
-        self.assertEqual(Rectangle(3, 2).area(), 6)
-        #27
-        self.assertEqual(Rectangle(4, 6, 2, 1, 12).__str__(), '[Rectangle] (12) 2/1 - 4/6')
+    @property
+    def width(self):
+        """ width of the rectangle """
+        return self.__width
 
-if __name__ == '__main__':
-    unittest.main()
+    @width.setter
+    def width(self, value):
+        if type(value) is not int:
+            raise TypeError('width must be an integer')
+
+        elif value <= 0:
+            raise ValueError('width must be > 0')
+
+        else:
+            self.__width = value
+
+    @property
+    def height(self):
+        """ getter of height """
+        return self.__height
+
+    @height.setter
+    def height(self, value):
+        if type(value) is not int:
+            raise TypeError('height must be an integer')
+
+        elif value <= 0:
+            raise ValueError('height must be > 0')
+
+        else:
+            self.__height = value
+
+    @property
+    def x(self):
+        """ getter of x """
+        return self.__x
+
+    @x.setter
+    def x(self, value):
+        if type(value) is not int:
+            raise TypeError('x must be an integer')
+
+        elif value < 0:
+            raise ValueError('x must be >= 0')
+
+        else:
+            self.__x = value
+
+    @property
+    def y(self):
+        """ Getter to y """
+        return self.__y
+
+    @y.setter
+    def y(self, value):
+        if type(value) is not int:
+            raise TypeError('y must be an integer')
+
+        elif value < 0:
+            raise ValueError('y must be >= 0')
+
+        else:
+            self.__y = value
+
+    def __str__(self):
+        """ string method """
+        return ("[Rectangle] ({}) {}/{} - {}/{}".format
+                (self.id, self.__x, self.__y, self.__width, self.__height))
+
+    def area(self):
+        """ returns the area of the rectangle """
+        return self.__width * self.__height
+
+    def display(self):
+        """ disoplays the rectangle to the stdout """
+        print('\n' * self.__y, end='')
+        for i in range(self.__height):
+            print(' ' * self.__x, end='')
+            print('#' * self.__width)
+
+    def update(self, *args, **kwargs):
+        """ Updates the values of the attrs """
+        attrs = ["id", "width", "height", "x", "y"]
+        if args is not None and len(args) != 0:
+
+            for i in range(len(args)):
+                if i >= len(attrs):
+                    break
+                else:
+                    setattr(self, attrs[i], args[i])
+
+        elif kwargs is not None:
+            for key, value in kwargs.items():
+                if key in attrs:
+                    setattr(self, key, value)
+
+    def to_dictionary(self):
+        """ Returns the dictionary representation """
+        attrs = ["id", "width", "height", "x", "y"]
+        values = [self.id, self.width, self.height, self.x, self.y]
+        return dict(zip(attrs, values))
