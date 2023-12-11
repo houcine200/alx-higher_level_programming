@@ -1,7 +1,8 @@
 #!/usr/bin/node
 
-let max = 0;
-let second = 0;
+let max = Number.MIN_SAFE_INTEGER;
+let second = Number.MIN_SAFE_INTEGER;
+
 if (process.argv.length <= 3) {
   console.log(0);
 } else {
