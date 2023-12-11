@@ -1,10 +1,13 @@
 #!/usr/bin/node
 
 const size = parseInt(process.argv[2]);
+let row = '';
 
 for (let i = 0; i < size; i++) {
   for (let j = 0; j < size; j++) {
-    process.stdout.write('x');
+    row += ('X');
   }
-  console.log('');
+  if (i != size - 1)
+    row += ('\n');
 }
+console.log(row);
