@@ -11,8 +11,8 @@ if (process.argv.length <= 3) {
     if (curr > max) {
       second = max;
       max = curr;
-    } else if (second < curr < max) {
-        second = curr;
+    } else if (curr > second && curr < max) {
+      second = curr;
     }
   }
   console.log(second);
