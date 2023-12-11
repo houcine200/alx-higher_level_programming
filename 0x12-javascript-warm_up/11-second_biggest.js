@@ -6,9 +6,9 @@ if (process.argv.length <= 3) {
   console.log(0);
 } else {
   for (let i = 2; i < process.argv.length; i++) {
-    if (process.argv[i] > max) {
+    if (parseInt(process.argv[i]) > max) {
       second = max;
-      max = process.argv[i];
+      max = parseInt(process.argv[i]);
     }
   }
   console.log(second);
