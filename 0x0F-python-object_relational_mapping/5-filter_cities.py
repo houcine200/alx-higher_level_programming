@@ -27,9 +27,7 @@ if __name__ == "__main__":
 
     rows = cursor.fetchall()
 
-    if not rows:
-        pass
-    else:
+    if rows:
         print(", ".join(row[0] for row in rows))
 
     cursor.close()
