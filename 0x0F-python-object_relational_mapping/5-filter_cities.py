@@ -22,15 +22,19 @@ if __name__ == "__main__":
                    ON cities.state_id = states.id \
                    WHERE states.name LIKE BINARY %s \
                    ORDER BY cities.id ASC;"
-    
+
     cursor.execute(query, (state_name,))
 
     rows = cursor.fetchall()
 
     if rows:
-        print(", ".join(row[0] for row in rows))
-    else:
-        print()
+        flag = 0
+        for row in rows:
+            if flag == 1:
+                print(", ", end="")
+            print(row[0], end="")
+            flag = 1
+    print()
 
     cursor.close()
     db.close()
