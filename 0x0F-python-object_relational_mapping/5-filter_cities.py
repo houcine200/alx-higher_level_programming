@@ -15,18 +15,22 @@ if __name__ == "__main__":
         port=3306
     )
     cursor = db.cursor()
+    state_name = argv[4]
 
-    """ cursor.execute(query, (state_name,)) """
-    cursor.execute("SELECT cities.name FROM cities \
+    query = "SELECT cities.name FROM cities \
                    JOIN states \
                    ON cities.state_id = states.id \
                    WHERE states.name LIKE BINARY %s \
-                   ORDER BY cities.id ASC;", (argv[4],))
+                   ORDER BY cities.id ASC;"
+    
+    cursor.execute(query, (state_name,))
 
     rows = cursor.fetchall()
 
-    for row in rows:
-        print(row[0])
+    if not rows:
+        pass
+    else:
+        print(", ".join(row[0] for row in rows))
 
     cursor.close()
     db.close()
