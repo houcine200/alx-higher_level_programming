@@ -29,6 +29,8 @@ if __name__ == "__main__":
 
     if rows:
         print(", ".join(row[0] for row in rows))
+    else:
+        print()
 
     cursor.close()
     db.close()
