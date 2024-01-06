@@ -11,4 +11,4 @@ if __name__ == "__main__":
             content = response.read().decode('utf-8')
         print(content)
     except Exception as err:
-        print(err.code)
+        print(f"Error code: {err.code}")
