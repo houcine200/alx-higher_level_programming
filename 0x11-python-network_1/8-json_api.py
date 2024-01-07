@@ -15,11 +15,11 @@ if __name__ == '__main__':
 
     try:
         json_data = r.json()
-        if json_data == {}:
+        if not json_data:
             print("No result")
         else:
             id = json_data.get('id')
             name = json_data.get('name')
-            print(f"[<{id}>] <{name}>")
+            print(f"[{id}] {name}")
     except ValueError:
         print("Not a valid JSON")
