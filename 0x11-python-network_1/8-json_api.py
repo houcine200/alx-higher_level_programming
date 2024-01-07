@@ -8,10 +8,7 @@ from sys import argv
 import requests
 
 if __name__ == '__main__':
-    if len(argv) < 2:
-        av1 = ""
-    else:
-        av1 = argv[1]
+    letter = "" if len(sys.argv) == 1 else sys.argv[1]
 
     data = {'q': av1}
     r = requests.post('http://0.0.0.0:5000/search_user', data)
