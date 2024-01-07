@@ -1,3 +1,7 @@
+#!/usr/bin/python3
+""" module doc """
+
+
 def find_peak(list_of_integers):
     """ Finds a peak in an unsorted array """
 
