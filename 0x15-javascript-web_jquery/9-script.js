@@ -1,4 +1,10 @@
 /* global $ */
-$('#add_item').click(function () {
-  $('UL.my_list').append('<li>Item</li>');
+$(function () {
+  $.ajax({
+    type: 'GET',
+    url: 'https://hellosalut.stefanbohacek.dev/?lang=fr',
+    success: function (data) {
+      $('#hello').text(data.hello);
+    }
+  });
 });
